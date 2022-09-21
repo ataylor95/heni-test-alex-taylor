@@ -1,5 +1,9 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { ThemeProvider } from "@emotion/react";
+
 import type { AppProps } from "next/app";
+
+import { theme } from "../theme";
 import { Header } from "../page-content/header";
 
 const App = ({ Component, pageProps }: AppProps) => {
@@ -14,12 +18,14 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <ApolloProvider client={client}>
-      <header>
-        <Header pageProps={pageProps} />
-      </header>
-      <main>
-        <Component {...pageProps} />
-      </main>
+      <ThemeProvider theme={theme}>
+        <header>
+          <Header pageProps={pageProps} />
+        </header>
+        <main>
+          <Component {...pageProps} />
+        </main>
+      </ThemeProvider>
     </ApolloProvider>
   );
 };

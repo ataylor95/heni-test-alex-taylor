@@ -1,8 +1,9 @@
 import { gql } from "@apollo/client";
-import { Ship } from "../types";
+import { Ship, DetailedShip } from "../types";
 
-export type GetShipsResult = {
-  ships: Ship[];
+// TODO: use this
+export type GetShipsResult<T extends Ship | DetailedShip> = {
+  ships: T[];
 };
 
 export const GET_SHIPS = gql`
@@ -12,6 +13,29 @@ export const GET_SHIPS = gql`
       image
       name
       model
+    }
+  }
+`;
+
+export const GET_SHIP = gql`
+  query getShip($id: ID!) {
+    ships(find: { id: $id }) {
+      id
+      image
+      name
+      model
+      active
+      status
+      type
+      weight_kg
+      year_built
+      roles
+      home_port
+      weight_lbs
+      successful_landings
+      imo
+      class
+      abs
     }
   }
 `;

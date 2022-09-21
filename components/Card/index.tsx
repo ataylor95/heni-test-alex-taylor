@@ -1,3 +1,4 @@
+import Link from "next/link";
 import MaterialCard, {
   CardProps as MaterialCardProps,
 } from "@mui/material/Card";
@@ -62,9 +63,11 @@ export const Card = ({
             <Skeleton width={100} />
           </Box>
         ) : (
-          <Button size="small" {...(!!href && { href })}>
-            Learn More
-          </Button>
+          <Link href={href || "/"} passHref={true}>
+            <Button size="small" {...(!!href && { href })}>
+              Learn More
+            </Button>
+          </Link>
         )}
       </CardActions>
     </Box>
