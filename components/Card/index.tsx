@@ -30,7 +30,7 @@ export const Card = ({
   onClick,
 }: CardProps) => {
   return (
-    <Box component={MaterialCard} maxWidth={345} onClick={onClick}>
+    <Box component={MaterialCard} onClick={onClick} mb={3}>
       {!image || loading ? (
         <Skeleton
           variant="rectangular"
@@ -38,7 +38,7 @@ export const Card = ({
           animation={loading ? "pulse" : false}
         />
       ) : (
-        <CardMedia component="img" height="140" image={image} alt={alt} />
+        <CardMedia component="img" height="240" image={image} alt={alt} />
       )}
 
       <CardContent>

@@ -6,8 +6,8 @@ export type GetShipsResult = {
 };
 
 export const GET_SHIPS = gql`
-  query getShips($limit: Int) {
-    ships(limit: $limit) {
+  query getShips($limit: Int, $offset: Int) {
+    ships(limit: $limit, offset: $offset) {
       id
       image
       name
