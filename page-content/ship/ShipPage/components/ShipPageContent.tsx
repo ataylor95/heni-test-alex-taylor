@@ -33,36 +33,40 @@ export const ShipPageContent: React.FC<{ ship: DetailedShip }> = ({ ship }) => {
           {name}
         </Box>
       </Grid2>
-      <Grid2 xs={12}>
+      <Grid2 xs={12} md={6}>
         <Box>
           {image ? (
             <CardMedia component="img" height={IMAGE_HEIGHT} image={image} alt={`image-of-${name}`} />
           ) : <Skeleton variant="rectangular" height={IMAGE_HEIGHT} />}
         </Box>
       </Grid2>
-      <Grid2 xs={10} display="flex" alignItems="center">
-        <Typography>
-          Id: {shipId}
-        </Typography>
-      </Grid2>
-      <Grid2 xs={2} display="flex" justifyContent="end">
-        <Chip label={active ? "Active" : "Inactive"} color={active ? "secondary" : "error"} style={{ alignSelf: "flex-end" }} />
-      </Grid2>
-      <Grid2 width="100%">
-        <Box sx={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", columnGap: 5, rowGap: 3 }}>
-          <Detail title="Model" content={model || "No model"} />
-          <Detail title="Ship Class" content={shipClass} />
-          <Detail title="Status" content={status || "-"} />
-          <Detail title="Home Port" content={home_port} />
-          <Detail title="Type" content={type} />
-          <Detail title="Success Landings" content={successful_landings || 0} />
-          <Detail title="Year Built" content={year_built} />
-          <Detail title="Weight (Kg)" content={weight_kg} />
-          <Detail title="Weight (Lb)" content={weight_lbs} />
-          <Detail title="IMO" content={imo} />
-          <Detail title="ABS" content={abs} />
-          <Detail title="Roles" content={roles.map((role) => <Box key={role}>{role}</Box>)} />
-        </Box>
+      <Grid2 container xs={12} md={6}>
+        <Grid2 xs={8} sm={10} md={6} display="flex" alignItems="center">
+          <Typography>
+            Id: {shipId}
+          </Typography>
+        </Grid2>
+        <Grid2 xs={4} sm={2} md={6} display="flex" justifyContent="end" alignContent={{ md: "center" }}>
+          <Chip label={active ? "Active" : "Inactive"} color={active ? "secondary" : "error"} sx={{
+            alignSelf: { xs: "flex-end", md: "center" }
+          }} />
+        </Grid2>
+        <Grid2 width="100%">
+          <Box sx={{ display: "grid", gridTemplateColumns: { xs: "repeat(2, 1fr)", sm: "repeat(3, 1fr)" }, columnGap: 5, rowGap: 3 }}>
+            <Detail title="Model" content={model || "No model"} />
+            <Detail title="Ship Class" content={shipClass} />
+            <Detail title="Status" content={status || "-"} />
+            <Detail title="Home Port" content={home_port} />
+            <Detail title="Type" content={type} />
+            <Detail title="Success Landings" content={successful_landings || 0} />
+            <Detail title="Year Built" content={year_built} />
+            <Detail title="Weight (Kg)" content={weight_kg} />
+            <Detail title="Weight (Lb)" content={weight_lbs} />
+            <Detail title="IMO" content={imo} />
+            <Detail title="ABS" content={abs} />
+            <Detail title="Roles" content={roles.map((role) => <Box key={role}>{role}</Box>)} />
+          </Box>
+        </Grid2>
       </Grid2>
     </>
   );

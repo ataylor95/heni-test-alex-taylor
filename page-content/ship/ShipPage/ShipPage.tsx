@@ -58,7 +58,7 @@ export const ShipPage = () => {
 };
 
 const PageContainer = ({ children }: { children: React.ReactNode }) => (
-  <Container maxWidth="sm">
+  <Container maxWidth="lg">
     <Grid2 container spacing={2}>
       {children}
     </Grid2>

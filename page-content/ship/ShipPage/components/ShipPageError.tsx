@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Container, Typography, Button } from "@mui/material";
 
 export const ShipPageError = () => (
-  <Container maxWidth="sm">
+  <>
     <Typography variant="h3">
       Oops
     </Typography>
@@ -14,5 +14,5 @@ export const ShipPageError = () => (
         Go back
       </Button>
     </Link>
-  </Container>
+  </>
 );
