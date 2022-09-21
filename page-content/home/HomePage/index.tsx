@@ -7,6 +7,7 @@ import { Button, Container } from "@mui/material";
 import { Ship } from "../../../api/ship/types";
 import { ShipCard } from "../../../containers/ship/ShipCard";
 import { GET_SHIPS } from "../../../api/ship/queries/getShips";
+import { Meta } from "./Meta";
 
 export const getStaticProps = () => {
   return {
@@ -54,16 +55,19 @@ export const HomePage = () => {
   }, [infiniteScrollRef, loadMoreShips]);
 
   return (
-    <Container maxWidth="sm">
-      <Box component={Typography} mt={2} mb={4} align="center" variant="h2">
-        Ships
-      </Box>
-      <Container style={{ display: "flex", flexDirection: "column" }}>
-        {data?.ships.map((ship, count) =>
-          <ShipCard key={`ship-${count}`} ship={ship} loading={loading} />
-        ) || Array.from({ length: 5 }).map((_, count) => <ShipCard key={`ship-placeholder-${count}`} loading />)}
+    <>
+      <Meta />
+      <Container maxWidth="sm">
+        <Box component={Typography} mt={2} mb={4} align="center" variant="h2">
+          Ships
+        </Box>
+        <Container style={{ display: "flex", flexDirection: "column" }}>
+          {data?.ships.map((ship, count) =>
+            <ShipCard key={`ship-${count}`} ship={ship} loading={loading} />
+          ) || Array.from({ length: 5 }).map((_, count) => <ShipCard key={`ship-placeholder-${count}`} loading />)}
+        </Container>
+        <span ref={infiniteScrollRef} />
       </Container>
-      <span ref={infiniteScrollRef} />
-    </Container>
+    </>
   );
 };
