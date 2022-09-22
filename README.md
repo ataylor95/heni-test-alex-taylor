@@ -30,8 +30,9 @@ The purpose of this test is to show a list of ships using SpaceX GraphQL API : h
 
 ### Any technologies you would add to improve the project/code quality ?
 
-....
+Prettier would have been nice to enforce some standards. Similarly, I think this should be run on commit with something like Husky to enforce the standards.
 
 ### About your own implementation ?
 
-....
+I deliberately chose to not get the ship information on the SS, because I think showing a loading screen whilst the query is tirgger is better UX.
+Missing a number of tests but did some core ones to show my approach. Some tests were not fully implemented, but I added some skips and left comments.
