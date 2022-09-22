@@ -1,13 +1,14 @@
 import React, { useRef, useEffect, useCallback } from "react";
 import { useQuery } from "@apollo/client";
+import { InferGetStaticPropsType } from "next";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Button, Container } from "@mui/material";
+import { Container } from "@mui/material";
 
 import { Ship } from "../../../api/ship/types";
 import { ShipCard } from "../../../containers/ship/ShipCard";
 import { GetShipsResult, GET_SHIPS } from "../../../api/ship/queries/getShips";
-import { Meta } from "./Meta";
+import { Meta } from "../../../components/Meta/Meta";
 
 export const getStaticProps = () => {
   return {
@@ -15,6 +16,8 @@ export const getStaticProps = () => {
       title: "SpaceX Ships",
       description: "SpaceX Ship List",
       url: "https://localhost:3000",
+      image: "https://i.imgur.com/I7kGmXD.jpeg", // Chose an image of Elon at random
+      type: "website",
     },
   };
 };
@@ -25,7 +28,7 @@ const observerIsIntersectingCallback = (entries: IntersectionObserverEntry[], ca
   if (entries[0].isIntersecting) callback();
 }
 
-export const HomePage = () => {
+export const HomePage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const infiniteScrollRef = useRef(null);
   const { data, loading, error, fetchMore } = useQuery<GetShipsResult<Ship>, { offset?: number, limit: number }>(GET_SHIPS, {
     variables: {
@@ -56,7 +59,7 @@ export const HomePage = () => {
 
   return (
     <>
-      <Meta />
+      <Meta {...props} />
       <Container maxWidth="sm">
         <Box component={Typography} mt={2} mb={4} align="center" variant="h2">
           Ships

@@ -2,7 +2,7 @@ import { Box, Typography, CardMedia, Skeleton, Chip } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2";
 
 import { DetailedShip } from "../../../../api/ship/types";
-import { Meta } from "../Meta";
+import { Meta } from "../../../../components/Meta";
 import { Detail } from "./Detail";
 
 export const IMAGE_HEIGHT = 400;
@@ -29,7 +29,7 @@ export const ShipPageContent: React.FC<{ ship: DetailedShip }> = ({ ship }) => {
 
   return (
     <>
-      <Meta title={shipId} description={name} url={`/ship/${shipId}`} image={image} />
+      <Meta title={shipId} description={name} url={`/ship/${shipId}`} image={image} type="product" />
       <Grid2 xs={12}>
         <Box component={Typography} mt={2} mb={4} align="center" variant="h2">
           {name}

@@ -1,11 +1,11 @@
 import Head from "next/head";
 
-export const Meta = ({ title, description, url, image }: { title: string, description: string, url: string, image: string }) => (
+export const Meta = ({ title, description, url, image, type }: { title: string, description: string, url: string, image: string, type: string }) => (
   <Head>
     <title key="title">{title}</title>
     <meta content={description} name="description" key="description" />
     <meta content={title} property="og:title" key="og:title" />
-    <meta content="product" property="og:type" key="og:type" />
+    <meta content={type} property="og:type" key="og:type" />
     <meta content={url} property="og:url" key="og:url" />
     <meta content={description} property="og:description" key="og:description" />
     <meta content={image} property="og:image" key="og:image" />

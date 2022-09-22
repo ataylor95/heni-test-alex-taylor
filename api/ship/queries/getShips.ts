@@ -16,6 +16,14 @@ export const GET_SHIPS = gql`
   }
 `;
 
+export const GET_SHIP_IDS = gql`
+  query getShipIds {
+    ships {
+      id
+    }
+  }
+`;
+
 export const GET_SHIP = gql`
   query getShip($id: ID!) {
     ships(find: { id: $id }) {
