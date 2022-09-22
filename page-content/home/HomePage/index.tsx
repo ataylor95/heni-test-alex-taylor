@@ -6,7 +6,7 @@ import { Button, Container } from "@mui/material";
 
 import { Ship } from "../../../api/ship/types";
 import { ShipCard } from "../../../containers/ship/ShipCard";
-import { GET_SHIPS } from "../../../api/ship/queries/getShips";
+import { GetShipsResult, GET_SHIPS } from "../../../api/ship/queries/getShips";
 import { Meta } from "./Meta";
 
 export const getStaticProps = () => {
@@ -27,7 +27,7 @@ const observerIsIntersectingCallback = (entries: IntersectionObserverEntry[], ca
 
 export const HomePage = () => {
   const infiniteScrollRef = useRef(null);
-  const { data, loading, error, fetchMore } = useQuery<{ ships: Ship[] }, { offset?: number, limit: number }>(GET_SHIPS, {
+  const { data, loading, error, fetchMore } = useQuery<GetShipsResult<Ship>, { offset?: number, limit: number }>(GET_SHIPS, {
     variables: {
       limit: DEFAULT_LIMIT
     },

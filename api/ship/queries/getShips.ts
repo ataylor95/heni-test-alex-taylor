@@ -1,7 +1,6 @@
 import { gql } from "@apollo/client";
 import { Ship, DetailedShip } from "../types";
 
-// TODO: use this
 export type GetShipsResult<T extends Ship | DetailedShip> = {
   ships: T[];
 };
