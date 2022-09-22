@@ -7,7 +7,7 @@ export interface Ship {
 
 export interface DetailedShip extends Ship {
   active: boolean;
-  status: string;
+  status: string | null;
   type: string;
   weight_kg: number;
   year_built: number;
